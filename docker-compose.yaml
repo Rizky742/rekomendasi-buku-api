@@ -1,0 +1,13 @@
+version: "3.9"
+
+services:
+  api:
+    build: .
+    container_name: rekomendasi_api
+    ports:
+      - "5000:5000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - .:/app          # Auto reload jika kamu ingin development
+    restart: unless-stopped
