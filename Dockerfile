@@ -18,10 +18,8 @@ ENV PATH="/opt/venv/bin:$PATH"
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy all source code
+# Copy all source code (termasuk folder data)
 COPY . .
-
-COPY data ./data
 
 # Gunicorn command
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
