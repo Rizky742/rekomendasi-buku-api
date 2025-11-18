@@ -7,9 +7,9 @@ from fuzzywuzzy import fuzz
 # LOAD DATA
 # ============================
 
-peminjaman = pd.read_csv("app/data/trx.csv")
-member = pd.read_csv("app/data/member_prodi.csv")
-koleksi = pd.read_csv("app/data/koleksi_yang_dipinjam.csv")
+peminjaman = pd.read_csv("./data/trx.csv")
+member = pd.read_csv("./data/member_prodi.csv")
+koleksi = pd.read_csv("./data/koleksi_yang_dipinjam.csv")
 
 # Join dataset
 df = member.merge(peminjaman, on="member_id", how="left")
