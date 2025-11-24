@@ -62,12 +62,18 @@ def rekomendasi_buku_member(member_id, top_n=10, w_tfidf=0.3, w_prodi=0.5, w_cf=
     # ============================
 
     df_prodi = df[df["ProgramStudi_id"] == prodi_id]
+    # popular_prodi = (
+    #     df_prodi["Title"]
+    #     .value_counts()
+    #     .reset_index()
+    #     .rename(columns={"index": "Title", "Title": "JumlahDipinjam"})
+    # )
     popular_prodi = (
         df_prodi["Title"]
         .value_counts()
         .reset_index()
-        .rename(columns={"index": "Title", "Title": "JumlahDipinjam"})
     )
+    popular_prodi.columns = ["Title", "JumlahDipinjam"]
 
     df_titles = df_titles.merge(popular_prodi, on="Title", how="left").fillna({"JumlahDipinjam": 0})
 
