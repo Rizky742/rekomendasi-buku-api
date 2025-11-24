@@ -10,16 +10,12 @@ RUN apt-get update && apt-get install -y \
 # Copy requirements
 COPY requirements.txt .
 
-# Create venv
-RUN python -m venv /opt/venv
-ENV PATH="/opt/venv/bin:$PATH"
+# Install deps langsung ke image
+RUN pip install --no-cache-dir --upgrade pip
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install deps
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
-
-# Copy all source code (termasuk folder data)
+# Copy source code
 COPY . .
 
-# Gunicorn command
+# Gunicorn
 CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
