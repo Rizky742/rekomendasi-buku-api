@@ -8,8 +8,8 @@ from fuzzywuzzy import fuzz
 # ============================
 
 peminjaman = pd.read_csv("./data/trx.csv")
-member = pd.read_csv("./data/member_prodi.csv")
-koleksi = pd.read_csv("./data/koleksi_yang_dipinjam.csv")
+member = pd.read_csv("./data/member prodi.csv")
+koleksi = pd.read_csv("./data/koleksi yang dipinjam.csv")
 
 # Join dataset
 df = member.merge(peminjaman, on="member_id", how="left")
